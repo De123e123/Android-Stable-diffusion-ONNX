@@ -30,11 +30,16 @@ jobs:
       run: ls app/src/main && du -sh app/src/main 
       
     - name: Delete existing model 
-      run: rm app/src/main/assets/model/unet/* && du  -sh app/src/main/assets/model/unet/
+      run: rm app/src/main/assets/model/unet/* && rm -rf app/src/main/assets/model/vae_decoder/* && rm -rf app/src/main/assets/model/text_encoder/*
       
     - name: Download model 
       run: wget -O app/src/main/assets/model/unet/model.ort https://huggingface.co/spaces/Androidonnxfork/test/resolve/main/fp16onnxsdquantized_in_ort/Beautifulra_v6/model.ort
-      
+    - name: Download vae
+      run: wget -O app/src/main/assets/model/vae_decoder/model.ort 
+   
+    - name: Download text_encoder 
+      run: wget -O app/src/main/assets/model/text_encoder/model.ort
+    
     - name: check Downloaded model
       run: ls app/src/main/assets/model/unet/*
 

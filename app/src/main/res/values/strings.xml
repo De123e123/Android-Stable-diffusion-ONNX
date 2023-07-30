@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android-Stablerealvision4.0-diffusion-ONNX</string>
+    <string name="app_name">Android-Stabledreamp-r-2-diffusion-ONNX</string>
     <string-array name="Resolution">
         <item>192</item>
         <item>256</item>

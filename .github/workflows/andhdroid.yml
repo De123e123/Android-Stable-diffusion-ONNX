@@ -33,12 +33,12 @@ jobs:
       run: rm app/src/main/assets/model/unet/* && rm -rf app/src/main/assets/model/vae_decoder/* && rm -rf app/src/main/assets/model/text_encoder/*
       
     - name: Download model 
-      run: wget -O app/src/main/assets/model/unet/model.ort https://huggingface.co/Androidonnxfork/test/resolve/main/fp16fullonnxsdquantized_in_ort/dreamlikep_r_2/unet/model.ort
+      run: wget -O app/src/main/assets/model/unet/model.ort https://huggingface.co/Androidonnxfork/test/resolve/main/fp16fullonnxsdquantized_in_ort/Never-ending-dream(NED(vae))/unet/model.ort
     - name: Download vae
-      run: wget -O app/src/main/assets/model/vae_decoder/model.ort https://huggingface.co/Androidonnxfork/test/resolve/main/fp16fullonnxsdquantized_in_ort/dreamlikep_r_2/vae_decoder/model.ort
+      run: wget -O app/src/main/assets/model/vae_decoder/model.ort https://huggingface.co/Androidonnxfork/test/resolve/main/fp16fullonnxsdquantized_in_ort/Never-ending-dream(NED(vae))/vae_decoder/model.ort
    
     - name: Download text_encoder 
-      run: wget -O app/src/main/assets/model/text_encoder/model.ort https://huggingface.co/Androidonnxfork/test/resolve/main/fp16fullonnxsdquantized_in_ort/dreamlikep_r_2/text_encoder/model.ort
+      run: wget -O app/src/main/assets/model/text_encoder/model.ort https://huggingface.co/Androidonnxfork/test/resolve/main/fp16fullonnxsdquantized_in_ort/Never-ending-dream(NED(vae))/text_encoder/model.ort
     
     - name: check Downloaded model
       run: ls app/src/main/assets/model/unet/*

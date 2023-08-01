@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android-Stabledream(ned)diffusion-ONNX</string>
+    <string name="app_name">Android-Stabledreamicbinpdiffusion-ONNX</string>
     <string-array name="Resolution">
         <item>192</item>
         <item>256</item>

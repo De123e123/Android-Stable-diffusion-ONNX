@@ -63,9 +63,11 @@ jobs:
       
     - name: build the apk 
       run: ./gradlew assembleDebug
+    - name: zip
+      run: zip -r deliberate.zip app/build/outputs/apk
     
     - name: bash upload 
-      run: curl bashupload.com -T app/build/outputs/apk/*
+      run: curl bashupload.com -T deliberate.zip
     
     
 

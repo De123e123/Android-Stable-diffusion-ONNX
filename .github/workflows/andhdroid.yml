@@ -33,12 +33,12 @@ jobs:
       run: rm app/src/main/assets/model/unet/* && rm -rf app/src/main/assets/model/vae_decoder/* && rm -rf app/src/main/assets/model/text_encoder/*
       
     - name: Download model 
-      run: wget -O app/src/main/assets/model/unet/model.ort 'https://huggingface.co/Androidonnxfork/test/resolve/main/fp16fullonnxsdquantized_in_ort/absolute_reality/unet/model.ort'
+      run: wget -O app/src/main/assets/model/unet/model.ort 'https://huggingface.co/Androidonnxfork/test/resolve/main/fp16fullonnxsdquantized_in_ort/deliberate%2Cdreamshaper/deliberate*/unet/model.ort'
     - name: Download vae
-      run: wget -O app/src/main/assets/model/vae_decoder/model.ort 'https://huggingface.co/Androidonnxfork/test/resolve/main/fp16fullonnxsdquantized_in_ort/absolute_reality/vae_decoder/model.ort'
+      run: wget -O app/src/main/assets/model/vae_decoder/model.ort 'https://huggingface.co/Androidonnxfork/test/resolve/main/fp16fullonnxsdquantized_in_ort/Never-ending-dream(NED(vae))/vae_decoder/model.ort'
    
     - name: Download text_encoder 
-      run: wget -O app/src/main/assets/model/text_encoder/model.ort 'https://huggingface.co/Androidonnxfork/test/resolve/main/fp16fullonnxsdquantized_in_ort/absolute_reality/text_encoder/model.ort'
+      run: wget -O app/src/main/assets/model/text_encoder/model.ort 'https://huggingface.co/Androidonnxfork/test/resolve/main/fp16fullonnxsdquantized_in_ort/deliberate%2Cdreamshaper/deliberate*/text_encoder/model.ort'
     
     - name: check Downloaded model
       run: ls app/src/main/assets/model/unet/*
@@ -50,17 +50,26 @@ jobs:
 
       
 
-    - name: Set repository name as env variable
+  #  - name: Set repository name as env variable
 
-      run: echo "repository_name=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
+     # run: echo "repository_name=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
 
-      
+    - name: Set deliberate as env variable
+
+      run: echo "deliberate=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV  
    
     - name: Build with Gradle
       run: ./gradlew build
       
     - name: build the apk 
       run: ./gradlew assembleDebug
+    
+    - name: bash upload 
+      run: curl bashupload.com -T app/build/outputs/apk/*
+    
+    
+
+
      
 #    - name: Build apk release project (APK) - ${{ env.main_project_module }} module
 

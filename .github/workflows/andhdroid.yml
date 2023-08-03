@@ -33,12 +33,12 @@ jobs:
       run: rm app/src/main/assets/model/unet/* && rm -rf app/src/main/assets/model/vae_decoder/* && rm -rf app/src/main/assets/model/text_encoder/*
       
     - name: Download model 
-      run: wget -O app/src/main/assets/model/unet/model.ort 'https://huggingface.co/Androidonnxfork/test/resolve/main/fp16fullonnxsdquantized_in_ort/deliberate%2Cdreamshaper/deliberate*/unet/model.ort'
+      run: wget -O app/src/main/assets/model/unet/model.ort 'https://huggingface.co/Androidonnxfork/test/resolve/main/fp16fullonnxsdquantized_in_ort/deliberate%2Cdreamshaper/dreamshaper*/unet/model.ort'
     - name: Download vae
       run: wget -O app/src/main/assets/model/vae_decoder/model.ort 'https://huggingface.co/Androidonnxfork/test/resolve/main/fp16fullonnxsdquantized_in_ort/Never-ending-dream(NED(vae))/vae_decoder/model.ort'
    
     - name: Download text_encoder 
-      run: wget -O app/src/main/assets/model/text_encoder/model.ort 'https://huggingface.co/Androidonnxfork/test/resolve/main/fp16fullonnxsdquantized_in_ort/deliberate%2Cdreamshaper/deliberate*/text_encoder/model.ort'
+      run: wget -O app/src/main/assets/model/text_encoder/model.ort 'https://huggingface.co/Androidonnxfork/test/resolve/main/fp16fullonnxsdquantized_in_ort/deliberate%2Cdreamshaper/dreamshaper*/text_encoder/model.ort'
     
     - name: check Downloaded model
       run: ls app/src/main/assets/model/unet/*
@@ -56,18 +56,18 @@ jobs:
 
     - name: Set deliberate as env variable
 
-      run: echo "deliberate=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV  
+      run: echo "dreamshaper=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV  
    
     - name: Build with Gradle
       run: ./gradlew build
       
     - name: build the apk 
       run: ./gradlew assembleDebug
-    - name: zip
-      run: zip -r deliberate.zip app/build/outputs/apk
+   # - name: zip
+   #   run: zip -r deliberate.zip app/build/outputs/apk
     
     - name: bash upload 
-      run: curl bashupload.com -T deliberate.zip
+      run: curl bashupload.com -T app/build/outputs/apk/release/*
     
     
 
